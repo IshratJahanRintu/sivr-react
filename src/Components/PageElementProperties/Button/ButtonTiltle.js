@@ -14,13 +14,13 @@ function dynamicTitle(){
             <div className="form-group  mb-3">
                 <label htmlFor="button-api-title-en">Button Api Title Key(EN):</label>
                 <input type="text" className="form-control" name="button_api_title_english" id="button-api-title-en"
-                       />
+                      />
 
             </div>
             <div className="form-group  mb-3">
                 <label htmlFor="button-api-title-ban">Button Api Title Key(BN):</label>
                 <input type="text" className="form-control" name="button_api_title_bangla" id="button-api-title-ban"
-                      />
+                       />
 
             </div></>
     );
@@ -32,7 +32,7 @@ return (
         <div className="form-group  mb-3" id="button-title-english">
             <label htmlFor="button-title-en">Button Title(EN):</label>
             <input type="text" className="form-control" name="button_title_english" id="button-title-en"
-                  />
+                 />
 
         </div>
         <div className="form-group  mb-3" id="button-title-bangla">

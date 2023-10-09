@@ -7,8 +7,8 @@ import {useModal} from "../../Custom Hooks/useModal";
 function AddSivrPage() {
     const {modalProperties,showModal}=useModal();
     const {activePage} = modalProperties;
-    const {sivrPages, setSivrPages} = useSivrPages();
-    console.log(sivrPages);
+    const {rootPage,addChild,setRootPage} = useSivrPages();
+    console.log(rootPage);
     const handleCloseModal = () => {
         showModal('none');
     };
@@ -45,14 +45,17 @@ function AddSivrPage() {
 
             if (response.status === 200) {
                 const sivrPage = response.data.sivrPage;
-                sivrPage.children = [];
-                console.log('SivrPage added');
-                showModal('', 0);
-                setSivrPages([
-                    ...sivrPages,
-                    response.data.sivrPage
-                ]);
+                console.log(sivrPage);
 
+
+                const parentId=sivrPage.parent_page_id;
+                sivrPage.children = [];
+
+             const updatedRoot= addChild(rootPage,parentId,sivrPage);
+               setRootPage(updatedRoot);
+                console.log('SivrPage added');
+                console.log(modalProperties);
+                showModal('none');
 
             } else {
 

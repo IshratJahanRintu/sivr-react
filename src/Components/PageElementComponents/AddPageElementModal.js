@@ -4,40 +4,60 @@ import axios from "axios";
 import {useSivrPages} from "../../Custom Hooks/SivrPageContext";
 import {useModal} from "../../Custom Hooks/useModal";
 import Button from "../PageElementProperties/Button/Button";
-
+import Paragraph from "../PageElementProperties/Paragraph/Paragraph";
 function AddPageElementModal() {
-    const {modalProperties,showModal}=useModal();
+    const {modalProperties, showModal} = useModal();
     const {activePage} = modalProperties;
     const handleCloseModal = () => {
         showModal('none');
     };
     console.log(activePage);
-    const [formData, setFormData] = useState({
-        page_id :activePage.id ,
-        type : '',
-        display_name_bn :'' ,
-        display_name_en : '',
-        background_color : '',
-        text_color : '',
-        element_properties : '',
-        element_order :'' ,
-        is_visible :'',
-        data_provider_function : '',
-    });
-
-
-    const handleInputChange = (e) => {
-        const {name, value} = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
+    // const [formData, setFormData] = useState({
+    //     page_id :activePage.id ,
+    //     type : 'button',
+    //     background_color : '#ffffff',
+    //     text_color : '#000000',
+    //     element_order :'' ,
+    //     is_visible :'N',
+    //     data_provider_function : '',
+    // });
+    //
+    // const resetFormData=()=>{
+    //     setFormData({
+    //         page_id :activePage.id ,
+    //         type : formData.type,
+    //         background_color : formData.background_color,
+    //         text_color : formData.text_color,
+    //         element_order :formData.element_order,
+    //         is_visible :formData.is_visible,
+    //         data_provider_function : formData.data_provider_function,
+    //     })
+    // }
+    //
+    // const handleInputChange = (e) => {
+    //     const {name, value} = e.target;
+    //     setFormData({
+    //         ...formData,
+    //         [name]: value,
+    //     });
+    // };
 
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         console.log('form submitted');
+
+        const formData = {};
+        const formElements = e.target.elements;
+        formData.page_id = activePage.id;
+        for (let i = 0; i < formElements.length; i++) {
+            const element = formElements[i];
+
+            if (element.name) {
+                formData[element.name] = element.value;
+            }
+        }
+
         try {
             const response = await axios.post(
                 'http://127.0.0.1:8000/api/add-page-element',
@@ -80,13 +100,13 @@ function AddPageElementModal() {
                                     <label htmlFor="g-element-order">Element Order</label>
                                     <input className="form-control" type="number"
                                            name="element_order" id="g-element-order"
-                                           min="1"/>
+                                           min="1" />
                                 </div>
                                 <div className="form-group mb-3">
                                     <label htmlFor="g-element-color">Text Color</label>
                                     <input className="form-control" type="color"
                                            name="text_color" id="g-element-color"
-                                          />
+                                           />
                                 </div>
 
                                 <div className="form-group mb-3">
@@ -94,35 +114,27 @@ function AddPageElementModal() {
                                     <input className="form-control" type="color"
                                            name="background_color"
                                            id="g-element-bg-color"
-                                           value="{{old('background_color')}}"/>
+                                           value="{{old('background_color')}}" />
                                 </div>
                                 <div className="form-group mb-3">
                                     <label htmlFor="g-element-visibility">Element Visibility</label>
                                     <select name="is_visible" id="g-element-visibility"
-                                            className="form-control">
+                                            className="form-control" >
                                         <option
-                                            value="Y" >
+                                            value="Y">
                                             Visible
                                         </option>
                                         <option
-                                            value="N" >
+                                            value="N">
                                             Invisible
                                         </option>
                                     </select>
                                 </div>
 
                                 <div className="form-group  mb-3">
-                                    <label>Page Heading (BN)</label>
-                                    <input type="text" className="form-control"
-                                           name="page_heading_ban" id="page_heading_ban"
-                                           placeholder="Page Heading (BN)" onChange={handleInputChange}
-                                    />
-                                </div>
-
-                                <div className="form-group  mb-3">
                                     <label htmlFor="g-element-type">Element Type</label>
                                     <select name="type" id="g-element-type"
-                                            className="form-control">
+                                            className="form-control" >
                                         <option
                                             value="button">
                                             Button
@@ -158,7 +170,7 @@ function AddPageElementModal() {
                                            id="g-element-provider-function"
                                            />
                                 </div>
-                                <Button/>
+                                <Paragraph/>
 
 
                             </div>

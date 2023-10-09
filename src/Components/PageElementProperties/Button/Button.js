@@ -6,7 +6,11 @@ import ButtonTypeWiseElement from "./ButtonTypeWiseElement";
 
 export default function Button() {
 
-    const [type,setType]=useState('static_navigation')
+    const [type,setType]=useState('static_navigation');
+    const handleChange=(e)=>{
+        setType(e.target.value)
+
+    }
 
 
     return (
@@ -14,7 +18,7 @@ export default function Button() {
             <div className="form-group mb-3">
                 <label htmlFor="button-type">Button Type:</label>
                 <select name="button_type" id="button-type"
-                        className="form-control" onChange={(e)=>setType(e.target.value)}>
+                        className="form-control" onChange={handleChange}>
                     <option value="static_navigation">
                         Navigation Static
                     </option>
@@ -33,7 +37,7 @@ export default function Button() {
 
                 </select>
             </div>
-            <ButtonTypeWiseElement type={type}/>
+            <ButtonTypeWiseElement type={type} />
             <TransferOptions />
         </div>
     );

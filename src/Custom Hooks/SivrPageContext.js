@@ -6,6 +6,8 @@ const SivrPageContext = createContext();
 export function SivrPageProvider({children}) {
     const [rootPage, setRootPage] = useState([]);
     const [allPages,setAllPages]=useState([]);
+
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -36,7 +38,37 @@ const getAllPages=()=>{
     fetchData();
 }
 
-    const findPageById = ( idToFind) => {
+    const addChild = (prevRootPage,parentId, newChild) => {
+
+            // Clone the previous rootPage
+            const updatedRoot = [...prevRootPage];
+
+            for (let i = 0; i < updatedRoot.length; i++) {
+                const page = updatedRoot[i];
+
+                parentId = parseInt(parentId);
+
+                if (page.id === parentId) {
+                    if (!page.children) {
+                        page.children = [];
+                    }
+                    page.children.push(newChild);
+                } else if (page.children && Array.isArray(page.children)) {
+                    addChild(page.children, parentId, newChild);
+                }
+            }
+
+            return updatedRoot; // Return the updated root
+        }
+
+
+
+
+
+
+
+
+        const findPageById = ( idToFind) => {
         idToFind = parseInt(idToFind);
          getAllPages();
         for (const item of allPages) {
@@ -50,7 +82,7 @@ const getAllPages=()=>{
     }
 
     return (
-        <SivrPageContext.Provider value={{rootPage, allPages, findPageById,getAllPages}}>
+        <SivrPageContext.Provider value={{rootPage, allPages, findPageById,getAllPages,addChild,setRootPage}}>
             {children}
         </SivrPageContext.Provider>
     );

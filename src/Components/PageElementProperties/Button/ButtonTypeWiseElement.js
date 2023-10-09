@@ -8,11 +8,11 @@ export  default function ButtonTypeWiseElement({type}){
 
     return (
         <>
-            {type==='static_navigation' && <StaticNavigationButton/>}
-            {type==='dynamic_navigation' && <DynamicNavigationButton/>}
-            {type==='confirm' && <ConfirmButton/>}
-            {type==='resend' &&<ResendButton/>}
-            {type==='submit' && <SubmitButton/>}
+            {type==='static_navigation' && <StaticNavigationButton />}
+            {type==='dynamic_navigation' && <DynamicNavigationButton />}
+            {type==='confirm' && <ConfirmButton />}
+            {type==='resend' &&<ResendButton />}
+            {type==='submit' && <SubmitButton />}
 
         </>
     );

@@ -7,6 +7,7 @@ export default function DynamicNavigationButton(){
 
 
     function handleTitleTypeChange(e) {
+
         setTitleType(e.target.value);
 
     }
@@ -15,13 +16,13 @@ export default function DynamicNavigationButton(){
         <>
             <div className="form-group  mb-3">
                 <label htmlFor="button-title-type">Title type:</label>
-                <select className="form-control" name="button_title_type" id="button-title-type" onChange={handleTitleTypeChange}>
+                <select className="form-control" name="button_title_type" id="button-title-type" onChange={handleTitleTypeChange} >
                     <option value="static" >Static</option>
                     <option value="dynamic" >Api</option>
 
                 </select>
             </div>
-            <ButtonTitle type={title_type}/>
+            <ButtonTitle type={title_type} />
         </>
 
     );
