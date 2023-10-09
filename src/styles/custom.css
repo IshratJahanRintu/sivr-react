@@ -1,0 +1,252 @@
+.custom-css{display:none}
+/*# sourceMappingURL=custom.css.map */
+/*Nav menu style*/
+.nav-menu{
+    min-width: 140px;
+    z-index: 1000;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.16);
+}
+
+/*Add modal*/
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Fully transparent initially */
+    z-index: 1000; /* Ensure it's above other content */
+    transition: background-color 0.3s ease; /* Transition effect */
+}
+
+.overlay.active {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay when active */
+}
+
+
+.nav-menu ul li{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    list-style: none;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    padding: 0.5rem 1rem;
+}
+.nav-menu a {
+    color: inherit;
+    text-decoration: none;
+}
+.nav-menu a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+.nav-list-group {
+    --bs-list-group-color: var(--bs-body-color);
+    --bs-list-group-bg: var(--bs-body-bg);
+    --bs-list-group-border-color: var(--bs-border-color);
+    --bs-list-group-border-width: var(--bs-border-width);
+    --bs-list-group-border-radius: var(--bs-border-radius);
+    --bs-list-group-item-padding-x: 1rem;
+    --bs-list-group-item-padding-y: 0.5rem;
+    --bs-list-group-action-color: var(--bs-secondary-color);
+    --bs-list-group-action-hover-color: var(--bs-emphasis-color);
+    --bs-list-group-action-hover-bg: var(--bs-tertiary-bg);
+    --bs-list-group-action-active-color: var(--bs-body-color);
+    --bs-list-group-action-active-bg: var(--bs-secondary-bg);
+    --bs-list-group-disabled-color: var(--bs-secondary-color);
+    --bs-list-group-disabled-bg: var(--bs-body-bg);
+    --bs-list-group-active-color: #fff;
+    --bs-list-group-active-bg: #fc5c65;
+    --bs-list-group-active-border-color: #fc5c65;
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    border-radius: var(--bs-list-group-border-radius);
+}
+.nav-menu ul li:hover {
+    background-color: #354f6f;
+    color: #fff;
+}
+.context-menu a {
+    color: inherit;
+    text-decoration: none;
+}
+.context-menu a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+.page-elements{
+    table-layout: fixed;
+    width: 100%;
+}
+
+.page-elements td{
+    width: 50%;
+}
+
+
+.add-new-page-element-btn {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+.delete-icon-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    outline: none;
+}
+
+.delete-icon-button i {
+    font-size: 1.2rem; /* Adjust the size as per your preference */
+    color: red; /* Set the icon color to red */
+    transition: color 0.2s; /* Optional: Add a smooth color transition on hover */
+}
+
+.delete-icon-button:hover i {
+    color: darkred; /* Change the icon color on hover */
+}
+
+/* CSS for the Delete Confirmation Modal */
+#deleteConfirmationModal {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition properties */
+}
+
+#deleteConfirmationModal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: scale(0.8); /* Initial state for the modal */
+}
+
+/* Apply styles to the modal content when the modal is shown */
+#deleteConfirmationModal.active {
+    display: flex;
+}
+
+#deleteConfirmationModal.active .modal-content {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.menu-icon-label {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.menu-icon-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-icon-container h5 {
+    text-align: center;
+    margin-bottom: 15px;
+    width: 112%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+}
+
+.icon-preview {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.icon-image-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.icon-label {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.icon-image-container::after {
+    content: "No icon Uploaded";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: Black;
+    font-size: 15px;
+    font-weight: bold;
+    display: none;
+}
+
+.icon-image-container.icon-label-empty::after {
+    display: block; /* Show the "Icon Not Found" text when the image is not found */
+}
+
+.icon-image-container img {
+    display: none;
+}
+
+.icon-image-container img[src] {
+    display: block;
+}
+#audioList li {
+    list-style-type: none;
+    cursor: pointer;
+    position: relative;
+    padding: .1rem .3rem;
+}
+.highlight {
+    background-color: #eff1f2;
+    border-radius: 4px;
+}
+
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh; /* Adjust this value as needed */
+    min-height: 30vh;
+    overflow: auto;
+}
+
+.modal-body {
+    flex-grow: 1;
+    overflow: auto; /* Add scrollbar if content exceeds max height */
+}
+
+#page-element-tab{
+   display: flex;
+    gap: 5px;
+}
